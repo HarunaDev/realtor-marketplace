@@ -48,3 +48,10 @@ class Listing(models.Model):
     created_by = models.ForeignKey(User, related_name='apartments', on_delete=models.CASCADE)
     thumbnail = models.ImageField(upload_to='listing_media', blank=True, null=True)
     large = models.ImageField(upload_to='listing_media', blank=True, null=True)
+
+    class Meta:
+        ordering = ('title',)
+        verbose_name_plural = "Listings"
+
+    def __str__(self):
+        return self.title
