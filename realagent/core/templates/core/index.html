@@ -6,4 +6,21 @@
 
 {% block content %}
 <h1>hello</h1>
+
+{% for property in listings %}
+
+<a href="">
+    <div>
+        <img class="w-[300px]" src="{{ property.thumbnail.url }}" alt="{{property.title}}">
+
+        <div>
+            <h1>{{ property.title }}</h1>
+            <p>{{ property.description }}</p>
+            <p>{{ property.created_at }}</p>
+            <p>{{ property.category }}, {{ property.price }}</p>
+        </div>
+    </div>
+    
+</a>
+{% endfor %}
 {% endblock %}
