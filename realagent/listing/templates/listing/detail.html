@@ -9,5 +9,27 @@
 
 <div>
     <img src="{{ listing.large.url }}" alt="{{ listing.title }}">
+
+    <p>{{ listing.title }}</p>
+    <p>{{ listing.created_at }}</p>
+</div>
+
+<div>
+    {% for property in related_items %}
+
+<a href="{% url 'listing:detail' property.id %}">
+    <div>
+        <img class="w-[300px]" src="{{ property.thumbnail.url }}" alt="{{property.title}}">
+
+        <div>
+            <h1>{{ property.title }}</h1>
+            <p>{{ property.description }}</p>
+            <p>{{ property.created_at }}</p>
+            <p>{{ property.category }}, {{ property.price }}</p>
+        </div>
+    </div>
+    
+</a>
+{% endfor %}
 </div>
 {% endblock %}
