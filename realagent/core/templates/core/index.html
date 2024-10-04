@@ -9,7 +9,7 @@
 
 {% for property in listings %}
 
-<a href="">
+<a href="{% url 'listing:detail' property.id %}">
     <div>
         <img class="w-[300px]" src="{{ property.thumbnail.url }}" alt="{{property.title}}">
 
