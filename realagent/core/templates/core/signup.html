@@ -6,4 +6,40 @@
 
 {% block content %}
 <h1>Sign up</h1>
+
+<form action="." method="post">
+    {% csrf_token %}
+
+    <div>
+        <label for="">Enter Username</label>
+        {{ form.username }}
+    </div>
+
+    <div>
+        <label for="">Enter Email</label>
+        {{ form.email }}
+    </div>
+
+    <div>
+        <label for="">Enter Password</label>
+        {{ form.password1 }}
+    </div>
+
+    <div>
+        <label for="">Re-enter Password</label>
+        {{ form.password2 }}
+    </div>
+
+    {% if form.errors or form.non_field_errors %}
+            <div class="mb-3 p-6 bg-red-100 rounded-xl">
+                {% for field in form %}
+                    {{ field.errors }}
+                {% endfor %}
+
+                {{ form.non_field_errors }} <!-- errors not connected to form field -->
+            </div>
+    {% endif %}
+
+    <button>Submit</button>
+</form>
 {% endblock %}
