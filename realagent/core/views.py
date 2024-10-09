@@ -1,32 +1,32 @@
 from django.shortcuts import render, redirect
-from listing.models import Category, Location, Type, Listing
+from listing.models import Category, Location, Type, Listing, UserProfile
 from .forms import SignupForm
 from django.contrib.auth import logout
 
-# Create your views here.
 def index(request):
     listings = Listing.objects.filter(is_sold=False)[0:6]
     categories = Category.objects.all()
 
-    # Accessing the username
+    # Accessing the username and account type if authenticated
     if request.user.is_authenticated:
         username = request.user.username
+        account_type = request.user.userprofile.account_type
     else:
         username = "Guest"
+        account_type = None
 
     return render(request, "core/index.html", {
         'categories': categories,
-        'listings': listings 
+        'listings': listings,
+        'username': username,
+        'account_type': account_type
     })
 
 def signup(request):
-    # validate form before creating user
     if request.method == 'POST':
         form = SignupForm(request.POST)
-
         if form.is_valid():
             form.save()
-
             return redirect('/login')
     else:
         form = SignupForm()
@@ -34,9 +34,6 @@ def signup(request):
     return render(request, 'core/signup.html', {
         'form': form
     })
-
-# def login(request):
-#     return render(request, 'core/login.html')
 
 def logout_view(request):
     logout(request)

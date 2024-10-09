@@ -1,7 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
 
-# Create your models here.
 # Category model
 class Category(models.Model):
     name = models.CharField(max_length=255)
@@ -55,3 +54,20 @@ class Listing(models.Model):
 
     def __str__(self):
         return self.title
+
+
+# UserProfile model to track whether the user is a seller or buyer
+class UserProfile(models.Model):
+    SELLER = 'seller'
+    BUYER = 'buyer'
+    
+    PROFILE_CHOICES = [
+        (SELLER, 'Seller'),
+        (BUYER, 'Buyer'),
+    ]
+    
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    profile_type = models.CharField(max_length=10, choices=PROFILE_CHOICES)
+
+    def __str__(self):
+        return f"{self.user.username} - {self.profile_type.capitalize()}"
