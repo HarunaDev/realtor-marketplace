@@ -10,7 +10,7 @@ def index(request):
     # Accessing the username and account type if authenticated
     if request.user.is_authenticated:
         username = request.user.username
-        account_type = request.user.userprofile.account_type
+        account_type = request.user.userprofile.profile_type
     else:
         username = "Guest"
         account_type = None
