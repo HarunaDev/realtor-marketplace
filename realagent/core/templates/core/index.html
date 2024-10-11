@@ -30,9 +30,9 @@
     <div>
         {% for category in categories %}
         <h2>{{ category.name }}</h2>
-        <!-- <p>
-            {{ category.items.count }}
-        </p> -->
+        <p>
+            {{ category.apartments.count }}
+        </p>
         {% endfor %}
     </div>
 </div>
