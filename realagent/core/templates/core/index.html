@@ -23,4 +23,17 @@
     
 </a>
 {% endfor %}
+
+<div>
+    <h2>Categories</h2>
+
+    <div>
+        {% for category in categories %}
+        <h2>{{ category.name }}</h2>
+        <!-- <p>
+            {{ category.items.count }}
+        </p> -->
+        {% endfor %}
+    </div>
+</div>
 {% endblock %}
