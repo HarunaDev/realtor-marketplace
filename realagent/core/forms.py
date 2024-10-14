@@ -22,15 +22,21 @@ class SignupForm(UserCreationForm):
     Form for user signup with styled fields.
     """
     profile_type = forms.ChoiceField(
-        choices=UserProfile.PROFILE_CHOICES,
+        choices=[('', 'Select user')] + UserProfile.PROFILE_CHOICES,  # Add placeholder option
         widget=forms.Select(attrs={
-            'class': 'block w-full rounded-md border-2 py-1.5 text-gray-900 shadow-sm focus:outline-none focus:ring-2 sm:text-sm sm:leading-6'
+            'class': 'block w-full rounded-md border-2 border-[#1d1d1d] py-1.5 text-gray-900 shadow-sm ring-1 ring-[#1d1d1d] placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-[#1d1d1d] sm:text-sm sm:leading-6', 'required': ''
         }),
     )
 
     class Meta:
         model = User
         fields = ("username", "email", "password1", "password2", "profile_type")
+    
+    def clean_profile_type(self):
+        profile_type = self.cleaned_data.get('profile_type')
+        if profile_type == '':
+            raise forms.ValidationError("Please select a valid user type.")
+        return profile_type
 
     def save(self, commit=True):
         user = super().save(commit=False)
@@ -60,10 +66,10 @@ class SignupForm(UserCreationForm):
 
     password1 = forms.CharField(widget=forms.PasswordInput(attrs={
         'placeholder': 'Your password',
-        'class': 'w-full py-4 px-6 rounded-xl'
+        'class': 'block w-full rounded-md border-2 border-[#1d1d1d] py-1.5 text-gray-900 shadow-sm ring-1 ring-[#1d1d1d] placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-[#1d1d1d] sm:text-sm sm:leading-6'
     }))
 
     password2 = forms.CharField(widget=forms.PasswordInput(attrs={
         'placeholder': 'Repeat password',
-        'class': 'w-full py-4 px-6 rounded-xl'
+        'class': 'block w-full rounded-md border-2 border-[#1d1d1d] py-1.5 text-gray-900 shadow-sm ring-1 ring-[#1d1d1d] placeholder:text-gray-400 focus:outline-none focus:ring-2 focus:ring-[#1d1d1d] sm:text-sm sm:leading-6'
     }))
