@@ -874,10 +874,6 @@ select {
   height: 1.25rem;
 }
 
-.h-10 {
-  height: 2.5rem;
-}
-
 .h-16 {
   height: 4rem;
 }
@@ -900,10 +896,6 @@ select {
 
 .w-\[300px\] {
   width: 300px;
-}
-
-.w-auto {
-  width: auto;
 }
 
 .w-full {
@@ -1037,6 +1029,14 @@ select {
 .bg-white {
   --tw-bg-opacity: 1;
   background-color: rgb(255 255 255 / var(--tw-bg-opacity));
+}
+
+.bg-\[\] {
+  background-color: ;
+}
+
+.bg-\[\#\] {
+  background-color: #;
 }
 
 .p-2 {
@@ -1200,6 +1200,14 @@ select {
   color: rgb(255 255 255 / var(--tw-text-opacity));
 }
 
+.text-\[\] {
+  color: ;
+}
+
+.text-\[\#\] {
+  color: #;
+}
+
 .shadow {
   --tw-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
   --tw-shadow-colored: 0 1px 3px 0 var(--tw-shadow-color), 0 1px 2px -1px var(--tw-shadow-color);
@@ -1226,6 +1234,11 @@ select {
 
 .ring-inset {
   --tw-ring-inset: inset;
+}
+
+.ring-\[\#1d1d1d\] {
+  --tw-ring-opacity: 1;
+  --tw-ring-color: rgb(29 29 29 / var(--tw-ring-opacity));
 }
 
 .ring-gray-300 {
@@ -1270,6 +1283,19 @@ select {
   background-color: rgb(13 148 136 / var(--tw-bg-opacity));
 }
 
+.hover\:bg-\[\]:hover {
+  background-color: ;
+}
+
+.hover\:bg-\[\#1\]:hover {
+  background-color: #1;
+}
+
+.hover\:bg-\[\#1d1d1d\]:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(29 29 29 / var(--tw-bg-opacity));
+}
+
 .hover\:text-gray-500\/75:hover {
   color: rgb(107 114 128 / 0.75);
 }
@@ -1287,9 +1313,19 @@ select {
   color: rgb(99 102 241 / var(--tw-text-opacity));
 }
 
+.hover\:text-gray-500:hover {
+  --tw-text-opacity: 1;
+  color: rgb(107 114 128 / var(--tw-text-opacity));
+}
+
 .focus\:border-teal-500:focus {
   --tw-border-opacity: 1;
   border-color: rgb(20 184 166 / var(--tw-border-opacity));
+}
+
+.focus\:outline-none:focus {
+  outline: 2px solid transparent;
+  outline-offset: 2px;
 }
 
 .focus\:ring-2:focus {
@@ -1298,8 +1334,19 @@ select {
   box-shadow: var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow, 0 0 #0000);
 }
 
+.focus\:ring-1:focus {
+  --tw-ring-offset-shadow: var(--tw-ring-inset) 0 0 0 var(--tw-ring-offset-width) var(--tw-ring-offset-color);
+  --tw-ring-shadow: var(--tw-ring-inset) 0 0 0 calc(1px + var(--tw-ring-offset-width)) var(--tw-ring-color);
+  box-shadow: var(--tw-ring-offset-shadow), var(--tw-ring-shadow), var(--tw-shadow, 0 0 #0000);
+}
+
 .focus\:ring-inset:focus {
   --tw-ring-inset: inset;
+}
+
+.focus\:ring-\[\#1d1d1d\]:focus {
+  --tw-ring-opacity: 1;
+  --tw-ring-color: rgb(29 29 29 / var(--tw-ring-opacity));
 }
 
 .focus\:ring-indigo-600:focus {
@@ -1326,6 +1373,10 @@ select {
 
 .focus-visible\:outline-indigo-600:focus-visible {
   outline-color: #4f46e5;
+}
+
+.focus-visible\:outline-\[\#1d1d1d\]:focus-visible {
+  outline-color: #1d1d1d;
 }
 
 @media (min-width: 640px) {
