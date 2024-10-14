@@ -853,6 +853,10 @@ select {
   margin-top: 1.5rem;
 }
 
+.mt-4 {
+  margin-top: 1rem;
+}
+
 .block {
   display: block;
 }
@@ -863,6 +867,10 @@ select {
 
 .flex {
   display: flex;
+}
+
+.grid {
+  display: grid;
 }
 
 .hidden {
@@ -922,6 +930,10 @@ select {
   flex-wrap: wrap;
 }
 
+.place-items-center {
+  place-items: center;
+}
+
 .items-center {
   align-items: center;
 }
@@ -940,6 +952,11 @@ select {
 
 .gap-6 {
   gap: 1.5rem;
+}
+
+.gap-x-6 {
+  -moz-column-gap: 1.5rem;
+       column-gap: 1.5rem;
 }
 
 .space-y-6 > :not([hidden]) ~ :not([hidden]) {
@@ -976,6 +993,10 @@ select {
   border-width: 2px;
 }
 
+.border {
+  border-width: 1px;
+}
+
 .border-\[\#1d1d1d\] {
   --tw-border-opacity: 1;
   border-color: rgb(29 29 29 / var(--tw-border-opacity));
@@ -994,6 +1015,14 @@ select {
 .border-white {
   --tw-border-opacity: 1;
   border-color: rgb(255 255 255 / var(--tw-border-opacity));
+}
+
+.border-\[\] {
+  border-color: ;
+}
+
+.border-\[\#\] {
+  border-color: #;
 }
 
 .bg-\[\#1d1d1d\] {
@@ -1024,6 +1053,19 @@ select {
 .bg-white {
   --tw-bg-opacity: 1;
   background-color: rgb(255 255 255 / var(--tw-bg-opacity));
+}
+
+.bg-indigo-600 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(79 70 229 / var(--tw-bg-opacity));
+}
+
+.bg-\[\] {
+  background-color: ;
+}
+
+.bg-\[\#\] {
+  background-color: #;
 }
 
 .p-2 {
@@ -1084,6 +1126,16 @@ select {
   padding-bottom: 1rem;
 }
 
+.px-3\.5 {
+  padding-left: 0.875rem;
+  padding-right: 0.875rem;
+}
+
+.py-24 {
+  padding-top: 6rem;
+  padding-bottom: 6rem;
+}
+
 .text-center {
   text-align: center;
 }
@@ -1105,6 +1157,16 @@ select {
 .text-sm {
   font-size: 0.875rem;
   line-height: 1.25rem;
+}
+
+.text-3xl {
+  font-size: 1.875rem;
+  line-height: 2.25rem;
+}
+
+.text-base {
+  font-size: 1rem;
+  line-height: 1.5rem;
 }
 
 .font-bold {
@@ -1137,6 +1199,10 @@ select {
 
 .leading-relaxed {
   line-height: 1.625;
+}
+
+.leading-7 {
+  line-height: 1.75rem;
 }
 
 .tracking-normal {
@@ -1180,6 +1246,11 @@ select {
 .text-white {
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity));
+}
+
+.text-indigo-600 {
+  --tw-text-opacity: 1;
+  color: rgb(79 70 229 / var(--tw-text-opacity));
 }
 
 .shadow {
@@ -1242,6 +1313,23 @@ select {
   color: rgb(156 163 175 / var(--tw-text-opacity));
 }
 
+.hover\:border:hover {
+  border-width: 1px;
+}
+
+.hover\:border-\[\]:hover {
+  border-color: ;
+}
+
+.hover\:border-\[\#\]:hover {
+  border-color: #;
+}
+
+.hover\:border-\[\#1d1d1d\]:hover {
+  --tw-border-opacity: 1;
+  border-color: rgb(29 29 29 / var(--tw-border-opacity));
+}
+
 .hover\:bg-\[\#1d1d1d\]:hover {
   --tw-bg-opacity: 1;
   background-color: rgb(29 29 29 / var(--tw-bg-opacity));
@@ -1255,6 +1343,25 @@ select {
 .hover\:bg-teal-600:hover {
   --tw-bg-opacity: 1;
   background-color: rgb(13 148 136 / var(--tw-bg-opacity));
+}
+
+.hover\:bg-indigo-500:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(99 102 241 / var(--tw-bg-opacity));
+}
+
+.hover\:bg-white:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(255 255 255 / var(--tw-bg-opacity));
+}
+
+.hover\:bg-\[\]:hover {
+  background-color: ;
+}
+
+.hover\:bg-\[\#ffffff\]:hover {
+  --tw-bg-opacity: 1;
+  background-color: rgb(255 255 255 / var(--tw-bg-opacity));
 }
 
 .hover\:text-gray-500:hover {
@@ -1272,6 +1379,19 @@ select {
 
 .hover\:text-gray-700\/75:hover {
   color: rgb(55 65 81 / 0.75);
+}
+
+.hover\:text-\[\]:hover {
+  color: ;
+}
+
+.hover\:text-\[\#\]:hover {
+  color: #;
+}
+
+.hover\:text-\[\#1d1d1d\]:hover {
+  --tw-text-opacity: 1;
+  color: rgb(29 29 29 / var(--tw-text-opacity));
 }
 
 .focus\:border-teal-500:focus {
@@ -1325,6 +1445,14 @@ select {
   outline-color: #1d1d1d;
 }
 
+.focus-visible\:outline-indigo-600:focus-visible {
+  outline-color: #4f46e5;
+}
+
+.focus-visible\:outline-gray-600:focus-visible {
+  outline-color: #4b5563;
+}
+
 @media (min-width: 640px) {
   .sm\:end-6 {
     inset-inline-end: 1.5rem;
@@ -1364,9 +1492,19 @@ select {
     padding-right: 1.5rem;
   }
 
+  .sm\:py-32 {
+    padding-top: 8rem;
+    padding-bottom: 8rem;
+  }
+
   .sm\:text-sm {
     font-size: 0.875rem;
     line-height: 1.25rem;
+  }
+
+  .sm\:text-5xl {
+    font-size: 3rem;
+    line-height: 1;
   }
 
   .sm\:leading-6 {
