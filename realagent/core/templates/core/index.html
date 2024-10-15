@@ -5,35 +5,17 @@
 {% endblock %}
 
 {% block content %}
-<h1>hello</h1>
+<main class="min-h-screen">
+    <section id="banner" class="border-2 border-[red] h-[600px] px-24 py-24">
+        <div class="flex justify-between items-center border-2 border-[blue] h-[200px]">
+            <h1 class="text-6xl text-[#303030] w-1/2 leading-none font-bold">Unlocking your dream home, one key at a time.</h1>
 
-{% for property in listings %}
+            <div class="flex flex-col justify-between items-end border-2 border-teal-900 h-2/3">
+                <h3 class="text-[#3d3d3d] font-semibold text-3xl">With us, home is just a click away</h3>
 
-<a href="{% url 'listing:detail' property.id %}">
-    <div>
-        <img class="w-[300px]" src="{{ property.thumbnail.url }}" alt="{{property.title}}">
-
-        <div>
-            <h1>{{ property.title }}</h1>
-            <p>{{ property.description }}</p>
-            <p>{{ property.created_at }}</p>
-            <p>{{ property.category }}, {{ property.price }}, {{ property.location }}</p>
+                <a class="bg-[#1d1d1d] px-2 py-2 border-2 border-[#1d1d1d] text-white font-semibold text-center rounded" href="#">Find a Home</a>
+            </div>
         </div>
-    </div>
-    
-</a>
-{% endfor %}
-
-<div>
-    <h2>Categories</h2>
-
-    <div>
-        {% for category in categories %}
-        <h2>{{ category.name }}</h2>
-        <p>
-            {{ category.apartments.count }}
-        </p>
-        {% endfor %}
-    </div>
-</div>
+    </section>
+</main>
 {% endblock %}
