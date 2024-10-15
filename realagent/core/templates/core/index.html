@@ -16,6 +16,25 @@
                 <a class="bg-[#1d1d1d] px-2 py-2 border-2 border-[#1d1d1d] text-white font-semibold text-center rounded" href="#">Find a Home</a>
             </div>
         </div>
+
+        <div>
+            {% with property=listings.0 %}
+            <a href="{% url 'listing:detail' property.id %}">
+                <img src="{{ property.thumbnail.url }}" alt="">
+            </a>
+            {% endwith %}
+
+            
+            <div>
+                <h3>Categories</h3>
+
+                <ul>
+                    {% for category in categories %}
+                    <li>{{ category.name }} : {{category.apartments.count}}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
     </section>
 </main>
 {% endblock %}

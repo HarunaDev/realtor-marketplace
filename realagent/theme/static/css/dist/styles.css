@@ -1030,6 +1030,10 @@ select {
   width: 33.333333%;
 }
 
+.w-\[400px\] {
+  width: 400px;
+}
+
 .max-w-md {
   max-width: 28rem;
 }
