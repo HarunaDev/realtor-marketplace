@@ -5,31 +5,55 @@
 {% endblock %}
 
 {% block content %}
-<h1>Detail</h1>
+<section class="h-full flex justify-between items-center pl-16 py-24">
+    <div class="flex flex-col justify-start items-start gap-12 pr-4">
+        <h1 class="text-[#1d1d1d] text-4xl font-semibold">{{ listing.title }}</h1>
+        <h1 class="text-xl text-[#303030] font-medium">{{ listing.description }}</h1>
 
-<div>
-    <img src="{{ listing.large.url }}" alt="{{ listing.title }}">
+        {% if request.user.is_authenticated %}
+            <a class="bg-[#1d1d1d] px-6 py-2 text-white font-semibold text-center rounded-md 
+            border-2 border-[#1d1d1d] hover:bg-white hover:text-[#1d1d1d] transition-all" href="#">Contact Agent</a>
 
-    <p>{{ listing.title }}</p>
-    <p>{{ listing.created_at }}</p>
-</div>
+        {% else %}
+            <span>
+                <a class="bg-[#1d1d1d] px-6 py-2 mr-4 text-white font-semibold text-center rounded-md 
+                border-2 border-[#1d1d1d] hover:bg-white hover:text-[#1d1d1d] transition-all" href="{% url 'core:login' %}">Login</a>
+                <a class="bg-white px-6 py-2 text-[#1d1d1d] font-semibold text-center rounded-md 
+                border-2 border-[#1d1d1d] hover:bg-[#1d1d1d] hover:text-white transition-all" href="{% url 'core:signup' %}">Sign up</a>
+            </span>
+        {% endif %}
 
-<div>
-    {% for property in related_items %}
-
-<a href="{% url 'listing:detail' property.id %}">
-    <div>
-        <img class="w-[300px]" src="{{ property.thumbnail.url }}" alt="{{property.title}}">
-
-        <div>
-            <h1>{{ property.title }}</h1>
-            <p>{{ property.description }}</p>
-            <p>{{ property.created_at }}</p>
-            <p>{{ property.category }}, {{ property.price }}</p>
-        </div>
+        <span class="flex gap-4">
+            <img class="rounded w-[200px]" src="{{ listing.thumbnail.url }}" alt="{{ listing.title }}">
+            <img class="rounded w-[200px]" src="{{ listing.large.url }}" alt="{{ listing.title }}">
+        </span>
+    </div>
+    <div class="relative w-3/5 overflow-hidden">
+        <!-- Image -->
+        <img 
+            class="w-full h-full object-cover rounded-l-lg" 
+            src="{{ listing.large.url }}" 
+            alt="{{ listing.title }}" 
+        />
+    
+        <!-- Tag: Created Date (Top-Left Corner) -->
+        <h2 
+            class="absolute top-2 left-2 bg-[#1d1d1d] text-white px-3 py-1 rounded-lg shadow-md">
+            {{ listing.created_at }}
+        </h2>
+    
+        <!-- Tag: Location (Top-Right Corner) -->
+        <h2 
+            class="absolute top-2 right-2 bg-[#1d1d1d] text-white px-3 py-1 rounded-lg shadow-md">
+            {{ listing.location }}
+        </h2>
+    
+        <!-- Tag: Category (Bottom-Left Corner) -->
+        <h2 
+            class="absolute bottom-2 left-2 bg-[#1d1d1d] text-white px-3 py-1 rounded-lg shadow-md">
+            {{ listing.category }}
+        </h2>
     </div>
     
-</a>
-{% endfor %}
-</div>
+</section>
 {% endblock %}
