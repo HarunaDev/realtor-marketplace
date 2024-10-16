@@ -5,9 +5,11 @@ from .models import Listing
 # create view for apartment detail
 def detail(request, pk):
     listing = get_object_or_404(Listing, pk=pk)
+    properties = Listing.objects.filter(is_sold=False).exclude(pk=pk)[0:6]
     related_items = Listing.objects.filter(location=listing.location, is_sold=False).exclude(pk=pk)[:3]
 
     return render(request, 'listing/detail.html', {
         'listing': listing,
-        'related_items': related_items
+        'related_items': related_items,
+        'properties': properties
     })
