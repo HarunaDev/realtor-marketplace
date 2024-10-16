@@ -5,35 +5,99 @@
 {% endblock %}
 
 {% block content %}
-<h1>hello</h1>
+<main class="min-h-screen bg-gray-50">
+    <section 
+        id="banner" 
+        class="min-h-[600px] lg:h-[800px] px-6 md:px-12 lg:px-24 py-12 flex flex-col gap-12">
+        
+        <!-- Header Section -->
+        <div class="flex flex-col lg:flex-row justify-between items-center lg:h-[400px] gap-6">
+            <h1 class="text-4xl md:text-5xl lg:text-6xl text-[#303030] leading-tight font-bold lg:w-1/2">
+                Unlocking your dream home, one key at a time.
+            </h1>
 
-{% for property in listings %}
+            <div class="flex flex-col justify-around items-end gap-4 h-auto lg:h-2/3">
+                <h3 class="text-[#3d3d3d] font-semibold text-2xl md:text-3xl text-right">
+                    With us, home is just a click away
+                </h3>
 
-<a href="{% url 'listing:detail' property.id %}">
-    <div>
-        <img class="w-[300px]" src="{{ property.thumbnail.url }}" alt="{{property.title}}">
-
-        <div>
-            <h1>{{ property.title }}</h1>
-            <p>{{ property.description }}</p>
-            <p>{{ property.created_at }}</p>
-            <p>{{ property.category }}, {{ property.price }}, {{ property.location }}</p>
+                <a href="#" 
+                   class="bg-[#1d1d1d] px-6 py-2 text-white font-semibold text-center rounded-md 
+                          border-2 border-[#1d1d1d] hover:bg-white hover:text-[#1d1d1d] transition-all">
+                    Find a Home
+                </a>
+            </div>
         </div>
-    </div>
+
+        <!-- Image and Categories Section -->
+        <div class="relative h-[400px] md:h-[600px] lg:h-[700px] w-full lg:w-2/3 mx-auto overflow-hidden rounded-lg">
     
-</a>
-{% endfor %}
+            <!-- Property Image -->
+            {% with property=listings.0 %}
+            <a href="{% url 'listing:detail' property.id %}">
+                <img 
+                    src="{{ property.thumbnail.url }}" 
+                    alt="{{ property.title }}" 
+                    class="w-full h-full object-cover">
+            </a>
+            {% endwith %}
+        
+            <!-- Categories Overlay (Now Fixed and Adjusted) -->
+            <div 
+                class="absolute inset-x-0 bottom-0 left-0 w-full h-[40%] bg-gray-100/75 p-6 text-white flex flex-col justify-start z-10">
+                
+                <!-- Title -->
+                <h3 class="text-2xl text-[#1d1d1d] font-bold mb-4">Categories</h3>
+        
+                <!-- Category List -->
+                <ul class="flex items-center gap-4 overflow-x-auto">
+                    {% for category in categories %}
+                    <li 
+                        class="flex-shrink-0 bg-white text-black border border-gray-300 p-4 rounded-lg shadow-lg min-w-[150px] text-center">
+                        <span class="font-semibold">{{ category.name }}</span> : 
+                        <span>{{ category.apartments.count }}</span>
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+        
+    </section>
 
-<div>
-    <h2>Categories</h2>
+    <section>
+        
+        <div class="bg-white">
+            <div class="mx-auto max-w-2xl px-4 py-16 sm:px-6 sm:py-24 lg:max-w-7xl lg:px-8">
+                <h2 class="text-2xl font-bold tracking-tight text-gray-900">Explore our Property listings</h2>
+            
+                <div class="mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 xl:gap-x-8">
+                    {% for property in listings %}
+                        <div class="group relative">
+                            <div class="aspect-h-1 aspect-w-1 w-full overflow-hidden rounded-md bg-gray-200 lg:aspect-none group-hover:opacity-75 lg:h-80">
+                                <img src="{{ property.thumbnail.url }}" alt="{{ property.title }}" class="h-full w-full object-cover object-center lg:h-full lg:w-full">
+                            </div>
+                            <div class="mt-4 flex justify-between">
+                                <div>
+                                    <h3 class="text-sm text-gray-700">
+                                        <a href="{% url 'listing:detail' property.id %}">
+                                        <span aria-hidden="true" class="absolute inset-0"></span>
+                                        {{ property.title }}
+                                        </a>
+                                    </h3>
+                                    <p class="mt-1 text-sm text-gray-500">{{ property.location }}</p>
+                                </div>
+                                <p class="text-sm font-medium text-gray-900">{{ property.category }}</p>
+                            </div>
+                        </div>
+                    {% endfor %}    
+                    <!-- More products... -->
+                </div>
+            </div>
+        </div>
+  
+    </section>
+</main>
 
-    <div>
-        {% for category in categories %}
-        <h2>{{ category.name }}</h2>
-        <p>
-            {{ category.apartments.count }}
-        </p>
-        {% endfor %}
-    </div>
-</div>
+
+
 {% endblock %}
