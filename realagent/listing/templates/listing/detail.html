@@ -5,55 +5,67 @@
 {% endblock %}
 
 {% block content %}
-<section class="h-full flex justify-between items-center pl-16 py-24">
-    <div class="flex flex-col justify-start items-start gap-12 pr-4">
-        <h1 class="text-[#1d1d1d] text-4xl font-semibold">{{ listing.title }}</h1>
-        <h1 class="text-xl text-[#303030] font-medium">{{ listing.description }}</h1>
+<section class="h-full flex flex-col lg:flex-row justify-between items-center px-4 md:px-8 lg:px-16 py-12 md:py-24 gap-8">
+    <!-- Text and Thumbnails Section -->
+    <div class="flex flex-col justify-start items-start gap-6 md:gap-12 w-full lg:w-2/5">
+        <h1 class="text-[#1d1d1d] text-3xl md:text-4xl font-semibold">{{ listing.title }}</h1>
+        <h1 class="text-lg md:text-xl text-[#303030] font-medium">{{ listing.description }}</h1>
 
+        <!-- Authentication Links -->
         {% if request.user.is_authenticated %}
-            <a class="bg-[#1d1d1d] px-6 py-2 text-white font-semibold text-center rounded-md 
-            border-2 border-[#1d1d1d] hover:bg-white hover:text-[#1d1d1d] transition-all" href="#">Contact Agent</a>
-
+            <a 
+                class="bg-[#1d1d1d] px-6 py-2 text-white font-semibold text-center rounded-md 
+                border-2 border-[#1d1d1d] hover:bg-white hover:text-[#1d1d1d] transition-all" 
+                href="#">
+                Contact Agent
+            </a>
         {% else %}
-            <span>
-                <a class="bg-[#1d1d1d] px-6 py-2 mr-4 text-white font-semibold text-center rounded-md 
-                border-2 border-[#1d1d1d] hover:bg-white hover:text-[#1d1d1d] transition-all" href="{% url 'core:login' %}">Login</a>
-                <a class="bg-white px-6 py-2 text-[#1d1d1d] font-semibold text-center rounded-md 
-                border-2 border-[#1d1d1d] hover:bg-[#1d1d1d] hover:text-white transition-all" href="{% url 'core:signup' %}">Sign up</a>
+            <span class="flex flex-wrap gap-4">
+                <a 
+                    class="bg-[#1d1d1d] px-6 py-2 text-white font-semibold text-center rounded-md 
+                    border-2 border-[#1d1d1d] hover:bg-white hover:text-[#1d1d1d] transition-all" 
+                    href="{% url 'core:login' %}">
+                    Login
+                </a>
+                <a 
+                    class="bg-white px-6 py-2 text-[#1d1d1d] font-semibold text-center rounded-md 
+                    border-2 border-[#1d1d1d] hover:bg-[#1d1d1d] hover:text-white transition-all" 
+                    href="{% url 'core:signup' %}">
+                    Sign up
+                </a>
             </span>
         {% endif %}
 
-        <span class="flex gap-4">
-            <img class="rounded w-[200px]" src="{{ listing.thumbnail.url }}" alt="{{ listing.title }}">
-            <img class="rounded w-[200px]" src="{{ listing.large.url }}" alt="{{ listing.title }}">
+        <!-- Thumbnail Images -->
+        <span class="flex flex-wrap gap-4">
+            <img class="rounded w-[150px] md:w-[200px]" src="{{ listing.thumbnail.url }}" alt="{{ listing.title }}">
+            <img class="rounded w-[150px] md:w-[200px]" src="{{ listing.large.url }}" alt="{{ listing.title }}">
         </span>
     </div>
-    <div class="relative w-3/5 overflow-hidden">
-        <!-- Image -->
+
+    <!-- Main Image Section -->
+    <div class="relative w-full lg:w-3/5 h-[300px] md:h-[400px] lg:h-full overflow-hidden">
+        <!-- Main Image with Rounded Left Corners -->
         <img 
             class="w-full h-full object-cover rounded-l-lg" 
             src="{{ listing.large.url }}" 
             alt="{{ listing.title }}" 
         />
-    
-        <!-- Tag: Created Date (Top-Left Corner) -->
+
+        <!-- Tags Overlay -->
         <h2 
-            class="absolute top-2 left-2 bg-[#1d1d1d] text-white px-3 py-1 rounded-lg shadow-md">
+            class="absolute top-2 left-2 bg-[#1d1d1d] text-white px-3 py-1 rounded-lg shadow-md text-sm md:text-base">
             {{ listing.created_at }}
         </h2>
-    
-        <!-- Tag: Location (Top-Right Corner) -->
         <h2 
-            class="absolute top-2 right-2 bg-[#1d1d1d] text-white px-3 py-1 rounded-lg shadow-md">
+            class="absolute top-2 right-2 bg-[#1d1d1d] text-white px-3 py-1 rounded-lg shadow-md text-sm md:text-base">
             {{ listing.location }}
         </h2>
-    
-        <!-- Tag: Category (Bottom-Left Corner) -->
         <h2 
-            class="absolute bottom-2 left-2 bg-[#1d1d1d] text-white px-3 py-1 rounded-lg shadow-md">
+            class="absolute bottom-2 left-2 bg-[#1d1d1d] text-white px-3 py-1 rounded-lg shadow-md text-sm md:text-base">
             {{ listing.category }}
         </h2>
     </div>
-    
 </section>
+
 {% endblock %}

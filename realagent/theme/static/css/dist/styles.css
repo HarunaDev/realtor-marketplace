@@ -978,6 +978,10 @@ select {
   height: 100vh;
 }
 
+.h-\[300px\] {
+  height: 300px;
+}
+
 .min-h-\[600px\] {
   min-height: 600px;
 }
@@ -1008,6 +1012,10 @@ select {
 
 .w-\[200px\] {
   width: 200px;
+}
+
+.w-\[150px\] {
+  width: 150px;
 }
 
 .min-w-\[150px\] {
@@ -1092,6 +1100,10 @@ select {
 
 .gap-1 {
   gap: 0.25rem;
+}
+
+.gap-8 {
+  gap: 2rem;
 }
 
 .gap-x-6 {
@@ -1378,6 +1390,11 @@ select {
 
 .text-xl {
   font-size: 1.25rem;
+  line-height: 1.75rem;
+}
+
+.text-lg {
+  font-size: 1.125rem;
   line-height: 1.75rem;
 }
 
@@ -1781,6 +1798,14 @@ select {
     height: 600px;
   }
 
+  .md\:h-\[400px\] {
+    height: 400px;
+  }
+
+  .md\:w-\[200px\] {
+    width: 200px;
+  }
+
   .md\:items-center {
     align-items: center;
   }
@@ -1798,6 +1823,16 @@ select {
     padding-right: 3rem;
   }
 
+  .md\:px-8 {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+
+  .md\:py-24 {
+    padding-top: 6rem;
+    padding-bottom: 6rem;
+  }
+
   .md\:text-3xl {
     font-size: 1.875rem;
     line-height: 2.25rem;
@@ -1806,6 +1841,21 @@ select {
   .md\:text-5xl {
     font-size: 3rem;
     line-height: 1;
+  }
+
+  .md\:text-4xl {
+    font-size: 2.25rem;
+    line-height: 2.5rem;
+  }
+
+  .md\:text-base {
+    font-size: 1rem;
+    line-height: 1.5rem;
+  }
+
+  .md\:text-xl {
+    font-size: 1.25rem;
+    line-height: 1.75rem;
   }
 }
 
@@ -1862,6 +1912,14 @@ select {
     width: 100%;
   }
 
+  .lg\:w-2\/5 {
+    width: 40%;
+  }
+
+  .lg\:w-3\/5 {
+    width: 60%;
+  }
+
   .lg\:max-w-7xl {
     max-width: 80rem;
   }
@@ -1906,6 +1964,11 @@ select {
   .lg\:px-8 {
     padding-left: 2rem;
     padding-right: 2rem;
+  }
+
+  .lg\:px-16 {
+    padding-left: 4rem;
+    padding-right: 4rem;
   }
 
   .lg\:pt-24 {
