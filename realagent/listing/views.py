@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from .models import Listing
-from .forms import NewListingForm
+from .forms import NewListingForm, EditListingForm
 from django.contrib.auth.decorators import login_required
 # Create your views here.
 
@@ -36,5 +36,26 @@ def new(request):
     return render(request, 'listing/form.html', {
         'form': form,
         'title': 'New Listing',
+        'account_type': account_type,
+    })
+
+@login_required
+def edit(request, pk):
+    account_type = request.user.userprofile.profile_type
+    listing = get_object_or_404(Listing, pk=pk, created_by=request.user)
+
+    if request.method == 'POST':
+        form = EditListingForm(request.POST, request.FILES, instance=listing)
+
+        if form.is_valid():
+            form.save()
+
+            return redirect('listing:detail', pk=listing.id)
+    else:
+        form = EditListingForm(instance=listing)
+    
+    return render(request, 'listing/form.html', {
+        'form': form,
+        'title': 'Edit Item',
         'account_type': account_type,
     })
