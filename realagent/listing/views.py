@@ -1,4 +1,4 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from .models import Listing
 from .forms import NewListingForm
 from django.contrib.auth.decorators import login_required
@@ -18,7 +18,17 @@ def detail(request, pk):
 
 @login_required
 def new(request):
-    form = NewListingForm()
+    if request.method == 'POST':
+        form = NewListingForm(request.POST, request.FILES)
+
+        if form.is_valid():
+            listing = form.save(commit=False)
+            listing.created_by = request.user
+            listing.save()
+
+            return redirect('listing:detail', pk=listing.id)
+    else:
+        form = NewListingForm()
 
     return render(request, 'listing/form.html', {
         'form': form,
