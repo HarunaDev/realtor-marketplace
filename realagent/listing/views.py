@@ -6,6 +6,7 @@ from django.contrib.auth.decorators import login_required
 
 # create view for apartment detail
 def detail(request, pk):
+    account_type = request.user.userprofile.profile_type
     listing = get_object_or_404(Listing, pk=pk)
     properties = Listing.objects.filter(is_sold=False).exclude(pk=pk)[0:6]
     related_items = Listing.objects.filter(location=listing.location, is_sold=False).exclude(pk=pk)[:3]
@@ -13,11 +14,13 @@ def detail(request, pk):
     return render(request, 'listing/detail.html', {
         'listing': listing,
         'related_items': related_items,
-        'properties': properties
+        'properties': properties,
+        'account_type': account_type      
     })
 
 @login_required
 def new(request):
+    account_type = request.user.userprofile.profile_type
     if request.method == 'POST':
         form = NewListingForm(request.POST, request.FILES)
 
@@ -33,4 +36,5 @@ def new(request):
     return render(request, 'listing/form.html', {
         'form': form,
         'title': 'New Listing',
+        'account_type': account_type,
     })
