@@ -6,5 +6,6 @@ app_name = 'listing'
 
 urlpatterns = [
     path('new/', views.new, name='new'),
-    path('<int:pk>/', views.detail, name='detail')
+    path('<int:pk>/', views.detail, name='detail'),
+    path('<int:pk>/edit/', views.edit, name='edit'),
 ]

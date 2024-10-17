@@ -3,11 +3,10 @@
 {% block title %}{{ title }}{% endblock %}
 
 {% block content %}
+<h1 class="font-bold text-4xl text-[#303030] mb-16 text-center">{{ title }}</h1>
 {% if account_type == 'seller' %}
 <form method="post" action="." enctype="multipart/form-data">
     {% csrf_token %}
-
-
 
     <div>
         {{ form.as_p }}
