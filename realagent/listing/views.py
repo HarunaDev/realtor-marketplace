@@ -1,5 +1,7 @@
 from django.shortcuts import render, get_object_or_404
 from .models import Listing
+from .forms import NewListingForm
+from django.contrib.auth.decorators import login_required
 # Create your views here.
 
 # create view for apartment detail
@@ -12,4 +14,13 @@ def detail(request, pk):
         'listing': listing,
         'related_items': related_items,
         'properties': properties
+    })
+
+@login_required
+def new(request):
+    form = NewListingForm()
+
+    return render(request, 'listing/form.html', {
+        'form': form,
+        'title': 'New Listing',
     })
