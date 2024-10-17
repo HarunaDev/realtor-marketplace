@@ -3,8 +3,11 @@
 {% block title %}{{ title }}{% endblock %}
 
 {% block content %}
+{% if account_type == 'seller' %}
 <form method="post" action="." enctype="multipart/form-data">
     {% csrf_token %}
+
+
 
     <div>
         {{ form.as_p }}
@@ -23,4 +26,7 @@
     <button>submit</button>
 
 </form>
+{% else %}
+<h1>not for you</h1>
+{% endif %}
 {% endblock %}
