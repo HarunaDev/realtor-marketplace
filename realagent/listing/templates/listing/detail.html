@@ -12,28 +12,29 @@
         <h1 class="text-lg md:text-xl text-[#303030] font-medium">{{ listing.description }}</h1>
 
         <!-- Authentication Links -->
-        {% if request.user.is_authenticated %}
+        {% if request.user == listing.created_by %}
+            <span class="flex flex-wrap gap-4">
+                <a 
+                    class="bg-[#1d1d1d] px-6 py-2 text-white font-semibold text-center rounded-md 
+                    border-2 border-[#1d1d1d] hover:bg-white hover:text-[#1d1d1d] transition-all" 
+                    href="{% url 'listing:edit' listing.id %}">
+                    Edit
+                </a>
+                <a 
+                    class="bg-white px-6 py-2 text-[#1d1d1d] font-semibold text-center rounded-md 
+                    border-2 border-[#1d1d1d] hover:bg-[#1d1d1d] hover:text-white transition-all" 
+                    href="{% url 'core:signup' %}">
+                    Delete
+                </a>
+            </span>    
+        {% else %}
             <a 
                 class="bg-[#1d1d1d] px-6 py-2 text-white font-semibold text-center rounded-md 
                 border-2 border-[#1d1d1d] hover:bg-white hover:text-[#1d1d1d] transition-all" 
                 href="#">
                 Contact Agent
             </a>
-        {% else %}
-            <span class="flex flex-wrap gap-4">
-                <a 
-                    class="bg-[#1d1d1d] px-6 py-2 text-white font-semibold text-center rounded-md 
-                    border-2 border-[#1d1d1d] hover:bg-white hover:text-[#1d1d1d] transition-all" 
-                    href="{% url 'core:login' %}">
-                    Login
-                </a>
-                <a 
-                    class="bg-white px-6 py-2 text-[#1d1d1d] font-semibold text-center rounded-md 
-                    border-2 border-[#1d1d1d] hover:bg-[#1d1d1d] hover:text-white transition-all" 
-                    href="{% url 'core:signup' %}">
-                    Sign up
-                </a>
-            </span>
+        
         {% endif %}
 
         <!-- Thumbnail Images -->

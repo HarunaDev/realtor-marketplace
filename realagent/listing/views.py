@@ -6,7 +6,9 @@ from django.contrib.auth.decorators import login_required
 
 # create view for apartment detail
 def detail(request, pk):
-    account_type = request.user.userprofile.profile_type
+    account_type = None
+    if request.user.is_authenticated:
+        account_type = request.user.userprofile
     listing = get_object_or_404(Listing, pk=pk)
     properties = Listing.objects.filter(is_sold=False).exclude(pk=pk)[0:6]
     related_items = Listing.objects.filter(location=listing.location, is_sold=False).exclude(pk=pk)[:3]
