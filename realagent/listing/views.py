@@ -61,3 +61,10 @@ def edit(request, pk):
         'title': 'Edit Item',
         'account_type': account_type,
     })
+
+@login_required
+def delete(request, pk):
+    listing = get_object_or_404(Listing, pk=pk, created_by=request.user)
+    listing.delete()
+
+    return redirect('core:index')
