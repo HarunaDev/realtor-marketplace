@@ -31,3 +31,30 @@ class EditListingForm(forms.ModelForm):
     class Meta:
         model = Listing
         fields = ('category', 'type', 'title', 'description', 'price', 'thumbnail', 'large', 'is_sold')
+
+        widgets = {
+                    'category': forms.Select(attrs={
+                        'class': INPUT_CLASSES
+                    }),
+                    'location': forms.Select(attrs={
+                        'class': INPUT_CLASSES
+                    }),
+                    'type': forms.Select(attrs={
+                        'class': INPUT_CLASSES
+                    }),
+                    'title': forms.TextInput(attrs={
+                        'class': INPUT_CLASSES
+                    }),
+                    'description': forms.Textarea(attrs={
+                        'class': INPUT_CLASSES
+                    }),
+                    'price': forms.TextInput(attrs={
+                        'class': INPUT_CLASSES
+                    }),
+                    'thumbnail': forms.FileInput(attrs={
+                        'class': ''
+                    }),
+                    'large': forms.FileInput(attrs={
+                        'class': ''
+                    }),
+                }
