@@ -37,7 +37,7 @@ def new(request):
 
     return render(request, 'listing/form.html', {
         'form': form,
-        'title': 'New Listing',
+        'title': 'New Listing Form',
         'account_type': account_type,
     })
 
