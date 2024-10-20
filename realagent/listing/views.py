@@ -58,7 +58,7 @@ def edit(request, pk):
     
     return render(request, 'listing/form.html', {
         'form': form,
-        'title': 'Edit Item',
+        'title': 'Edit Listing Form',
         'account_type': account_type,
     })
 
