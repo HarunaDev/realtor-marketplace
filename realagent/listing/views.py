@@ -1,8 +1,20 @@
 from django.shortcuts import render, get_object_or_404, redirect
-from .models import Listing
+from .models import Listing, Location
 from .forms import NewListingForm, EditListingForm
 from django.contrib.auth.decorators import login_required
+from django.db.models import Q
 # Create your views here.
+
+# view to search item
+def listings(request):
+    query = request.GET.get('query', '')
+    listings = Listing.objects.filter(is_sold=False)
+    locations = Location.objects.all()
+    # location_id = request.GET.get('location', 0)
+
+    return render(request, 'listing/listings.html', {
+        'listings': listings,
+    })
 
 # create view for apartment detail
 def detail(request, pk):
