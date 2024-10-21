@@ -12,8 +12,11 @@ def listings(request):
     locations = Location.objects.all()
     # location_id = request.GET.get('location', 0)
 
+    if query:
+        listings = listings.filter(Q(title__icontains=query) | Q(description__icontains=query))
     return render(request, 'listing/listings.html', {
         'listings': listings,
+        'query': query
     })
 
 # create view for apartment detail
