@@ -11,12 +11,15 @@ def listings(request):
     listings = Listing.objects.filter(is_sold=False)
     locations = Location.objects.all()
     # location_id = request.GET.get('location', 0)
-
+    account_type = None
+    if request.user.is_authenticated:
+        account_type = request.user.userprofile.profile_type
     if query:
         listings = listings.filter(Q(title__icontains=query) | Q(description__icontains=query))
     return render(request, 'listing/listings.html', {
         'listings': listings,
-        'query': query
+        'query': query,
+        'account_type': account_type
     })
 
 # create view for apartment detail
