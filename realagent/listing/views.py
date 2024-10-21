@@ -10,15 +10,20 @@ def listings(request):
     query = request.GET.get('query', '')
     listings = Listing.objects.filter(is_sold=False)
     locations = Location.objects.all()
-    # location_id = request.GET.get('location', 0)
+    location_id = request.GET.get('location', 0)
     account_type = None
     if request.user.is_authenticated:
         account_type = request.user.userprofile.profile_type
+    
+    if location_id:
+        listings = listings.filter(location_id=location_id)
     if query:
         listings = listings.filter(Q(title__icontains=query) | Q(description__icontains=query))
     return render(request, 'listing/listings.html', {
         'listings': listings,
         'query': query,
+        'locations': locations,
+        'location_id': int(location_id),
         'account_type': account_type
     })
 

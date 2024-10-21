@@ -11,6 +11,16 @@
     <button>Search</button>
 </form>
 
+<p>Locations</p>
+
+<ul>
+   {% for location in locations %}
+    <li>
+        <a href="{% url 'listing:listings' %}?query={{ query }}&location={{ location.id }}">{{ location }}</a>
+    </li>
+   {% endfor %} 
+</ul>
+
 {% for property in listings %}
 <img src="{{property.thumbnail.url}}" alt="{{property.title}}">
 {% endfor %}
