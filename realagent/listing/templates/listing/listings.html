@@ -5,6 +5,11 @@
 {% endblock %}
 
 {% block content %}
+<form action="{% url 'listing:listings' %}" method="get">
+    <input type="text" name="query" value="{{ query }}" placeholder="Find an apartment">
+
+    <button>Search</button>
+</form>
 
 {% for property in listings %}
 <img src="{{property.thumbnail.url}}" alt="{{property.title}}">
