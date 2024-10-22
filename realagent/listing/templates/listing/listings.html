@@ -21,6 +21,8 @@
    {% endfor %} 
 </ul>
 
+<a href="{% url 'listing:listings' %}">Reset</a>
+
 {% for property in listings %}
 <img src="{{property.thumbnail.url}}" alt="{{property.title}}">
 {% endfor %}
