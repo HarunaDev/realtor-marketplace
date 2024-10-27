@@ -36,7 +36,10 @@
  <!-- This returns all the properties available in the database-->
  {% for property in listings %}
  <!-- It only returns the image -->
- <img src="{{property.thumbnail.url}}" alt="{{property.title}}">
+ <div>
+    <img src="{{property.thumbnail.url}}" alt="{{property.title}}">
+    <h1>{{ property.title }}</h1>
+ </div>
  {% endfor %}
  
  {% endblock %}
