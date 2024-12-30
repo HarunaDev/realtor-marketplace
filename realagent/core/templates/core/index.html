@@ -35,10 +35,14 @@
             <!-- Property Image -->
             {% with property=listings.0 %}
             <a href="{% url 'listing:detail' property.id %}">
+                {% comment %} {% if property.thumbnail %} {% endcomment %}
                 <img 
                     src="{{ property.thumbnail.url }}" 
                     alt="{{ property.title }}" 
                     class="w-full h-full object-cover">
+                {% comment %} {% else %} {% endcomment %}
+                {% comment %} <h1>No image</h1> {% endcomment %}
+                {% comment %} {%endif%} {% endcomment %}
             </a>
             {% endwith %}
         

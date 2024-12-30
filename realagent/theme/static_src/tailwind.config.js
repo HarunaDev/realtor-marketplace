@@ -31,7 +31,7 @@ module.exports = {
          * patterns match your project structure.
          */
         /* JS 1: Ignore any JavaScript in node_modules folder. */
-        '!../../**/node_modules',
+        // '!../../**/node_modules',
         /* JS 2: Process all JavaScript files in the project. */
         // '../../**/*.js',
 
@@ -39,7 +39,7 @@ module.exports = {
          * Python: If you use Tailwind CSS classes in Python, uncomment the following line
          * and make sure the pattern below matches your project structure.
          */
-        '../../**/*.py'
+        // '../../**/*.py'
     ],
     theme: {
         extend: {},
@@ -54,4 +54,16 @@ module.exports = {
         require('@tailwindcss/typography'),
         require('@tailwindcss/aspect-ratio'),
     ],
+    // purge: [
+    //     // Templates within theme app (e.g. base.html)
+    //     '../templates/**/*.html',
+    //     // Templates in other apps
+    //     '../../templates/**/*.html',
+    //     // Ignore files in node_modules 
+    //     '!../../**/node_modules',
+    //     // Include JavaScript files that might contain Tailwind CSS classes      
+    //     '../../**/*.js',
+    //     // Include Python files that might contain Tailwind CSS classes
+    //     '../../**/*.py'      
+    //   ],
 }

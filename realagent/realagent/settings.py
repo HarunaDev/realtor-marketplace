@@ -72,6 +72,8 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'realagent.wsgi.application'
+NPM_BIN_PATH = "/usr/local/bin/npm" #for mac & linux
+# NPM_BIN_PATH = "C:/Program Files/nodejs/npm.cmd" #for windows
 
 
 # Database
@@ -136,5 +138,3 @@ INTERNAL_IPS = [
 ]
 
 TAILWIND_APP_NAME = 'theme'
-
-NPM_BIN_PATH = "C:/Program Files/nodejs/npm.cmd"
